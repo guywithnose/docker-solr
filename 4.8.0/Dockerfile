@@ -5,8 +5,7 @@ RUN pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync
 ENV SOLR_VERSION 4.8.0
 ENV SOLR solr-$SOLR_VERSION
 
-RUN curl --retry 3 http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz > /opt/$SOLR.tgz
-RUN tar -C /opt --extract --file /opt/$SOLR.tgz
+RUN curl --retry 3 http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz | tar -C /opt --extract --gzip
 RUN mv /opt/$SOLR /opt/solr
 
 RUN useradd --home-dir /opt/solr --comment "Solr Server" solr

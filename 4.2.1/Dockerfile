@@ -1,7 +1,6 @@
 FROM base/archlinux
 
-RUN pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet jre7-openjdk-headless
-RUN pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet ca-certificates-java
+RUN pacman-key --populate archlinux && pacman-key --refresh-keys && pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --refresh --sysupgrade --noconfirm --noprogressbar --quiet && pacman-db-upgrade && pacman --sync --noconfirm --noprogressbar --quiet jre7-openjdk-headless unzip lsof ca-certificates-java
 
 ENV SOLR_VERSION 4.2.1
 ENV SOLR solr-$SOLR_VERSION

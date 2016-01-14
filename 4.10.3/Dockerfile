@@ -1,9 +1,8 @@
 FROM base/archlinux
 
 RUN pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet jre7-openjdk-headless
-RUN pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet ca-certificates-java
 
-ENV SOLR_VERSION 4.4.0
+ENV SOLR_VERSION 4.10.3
 ENV SOLR solr-$SOLR_VERSION
 
 RUN curl --retry 3 http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz | tar -C /opt --extract --gzip

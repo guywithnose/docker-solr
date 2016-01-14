@@ -13,6 +13,10 @@ RUN useradd --home-dir /opt/solr --comment "Solr Server" solr
 
 RUN chown -R solr:solr /opt/solr/example
 
+RUN mkdir -p /solr/apps/solr/home
+
+RUN ln -s /opt/solr/dist/ /solr/apps/solr/home/
+
 USER solr
 
 EXPOSE 8983

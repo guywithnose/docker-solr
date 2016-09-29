@@ -2,7 +2,7 @@ FROM rafaelsoares/archlinux
 
 RUN pacman-key --init && pacman-key --populate archlinux && pacman-key --refresh-keys && pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --refresh --sysupgrade --noconfirm --noprogressbar --quiet && pacman-db-upgrade && pacman --sync --noconfirm --noprogressbar --quiet jre8-openjdk-headless unzip lsof ca-certificates-java
 
-ENV SOLR_VERSION 6.2.0
+ENV SOLR_VERSION 6.2.1
 ENV SOLR solr-$SOLR_VERSION
 
 RUN curl --retry 3 http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz | tar -C /opt --extract --gzip
